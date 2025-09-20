@@ -1,0 +1,57 @@
+<?xml version='1.0' standalone='yes'?>
+<!DOCTYPE PLUGIN [
+<!ENTITY name      "traefik-labels-manager">
+<!ENTITY author    "TwojNick">
+<!ENTITY version   "2025.09.20">
+<!ENTITY md5       "TBD">
+<!ENTITY launch    "Settings/TraefikLabelsManager">
+<!ENTITY plugdir   "/usr/local/emhttp/plugins/&name;">
+<!ENTITY github    "TwojGithub/&name;">
+<!ENTITY pluginURL "https://raw.githubusercontent.com/&github;/master/&name;.plg">
+]>
+
+<PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;" min="6.8.0">
+
+<CHANGES>
+###2025.09.20
+- Początkowa wersja pluginu
+- Dodawanie etykiet Traefik do kontenerów Docker
+- Integracja z zakładką Docker w Unraid
+</CHANGES>
+
+<!--
+Traefik Labels Manager Plugin
+-->
+
+<FILE Run="/bin/bash">
+<INLINE>
+# Usuń poprzednią wersję jeśli istnieje
+rm -rf "&plugdir;"
+
+# Utwórz katalogi
+mkdir -p "&plugdir;/scripts"
+mkdir -p "&plugdir;/css"
+mkdir -p "&plugdir;/js"
+</INLINE>
+</FILE>
+
+<FILE Name="&plugdir;/README.md">
+<INLINE>
+# Traefik Labels Manager
+
+Plugin do Unraid umożliwiający łatwe dodawanie etykiet Traefik do kontenerów Docker.
+
+## Funkcjonalności:
+- Dodawanie przycisku "Dodaj etykietę" w zakładce Docker
+- Wybór kontenera z listy dostępnych
+- Automatyczne generowanie labeli Traefik
+- Wsparcie dla różnych schematów etykiet
+
+## Instalacja:
+1. Pobierz plik .plg
+2. Zainstaluj przez Community Applications lub ręcznie
+3. Przejdź do Docker → Dodaj etykietę
+</INLINE>
+</FILE>
+
+</PLUGIN>

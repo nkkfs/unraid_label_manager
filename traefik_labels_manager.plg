@@ -1,0 +1,50 @@
+﻿<?xml version='1.0' standalone='yes'?>
+<!DOCTYPE PLUGIN [
+<!ENTITY name      "traefik-labels-manager">
+<!ENTITY author    "nkkfs">
+<!ENTITY version   "2025.09.20">
+<!ENTITY launch    "Settings/TraefikLabelsManager">
+<!ENTITY plugdir   "/usr/local/emhttp/plugins/&name;">
+<!ENTITY github    "nkkfs/unraid_label_manager">
+<!ENTITY pluginURL "https://raw.githubusercontent.com/&github;/main/traefik_labels_manager.plg">
+]>
+
+<PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;" min="6.8.0">
+
+<CHANGES>
+###2025.09.20
+- Początkowa wersja pluginu
+- Dodawanie etykiet Traefik do kontenerów Docker
+- Integracja z zakładką Docker w Unraid
+</CHANGES>
+
+<FILE Run="/bin/bash">
+<INLINE>
+# Remove previous version if exists
+rm -rf "&plugdir;"
+
+# Create directories
+mkdir -p "&plugdir;/scripts"
+mkdir -p "&plugdir;/css"
+mkdir -p "&plugdir;/js"
+
+# Download files from GitHub
+wget -O "&plugdir;/TraefikLabelsManager.php" "https://raw.githubusercontent.com/&github;/main/source/TraefikLabelsManager.php"
+wget -O "&plugdir;/scripts/add_labels.php" "https://raw.githubusercontent.com/&github;/main/source/scripts/add_labels.php"
+wget -O "&plugdir;/scripts/get_containers.php" "https://raw.githubusercontent.com/&github;/main/source/scripts/get_containers.php"
+wget -O "&plugdir;/js/traefik-manager.js" "https://raw.githubusercontent.com/&github;/main/source/js/traefik-manager.js"
+wget -O "&plugdir;/css/traefik-manager.css" "https://raw.githubusercontent.com/&github;/main/source/css/traefik-manager.css"
+
+# Set permissions
+chmod +x "&plugdir;/scripts/"*.php
+</INLINE>
+</FILE>
+
+<FILE Run="/bin/bash" Method="remove">
+<INLINE>
+# Remove plugin files
+rm -rf "&plugdir;"
+</INLINE>
+</FILE>
+
+</PLUGIN>

@@ -7,7 +7,7 @@
 <!ENTITY launch    "Settings/TraefikLabelsManager">
 <!ENTITY plugdir   "/usr/local/emhttp/plugins/&name;">
 <!ENTITY github    "TwojGithub/&name;">
-<!ENTITY pluginURL "https://raw.githubusercontent.com/nkkfs/unraid_label_manager/master/traefik-labels-manager.plg">
+<!ENTITY pluginURL "https://github.com/nkkfs/unraid_label_manager/blob/main/traefik_labels_manager.plg">
 ]>
 
 <PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;" min="6.8.0">
@@ -56,3 +56,4 @@ Plugin do Unraid umożliwiający łatwe dodawanie etykiet Traefik do kontenerów
 
 
 </PLUGIN>
+
